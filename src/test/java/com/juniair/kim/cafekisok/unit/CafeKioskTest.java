@@ -42,4 +42,18 @@ public class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).hasSize(2);
     }
 
+    @Test
+    public void hasBeverageTestForName() {
+
+        // given
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Beverage americano = new Americano();
+
+        // when
+        cafeKiosk.addBeverage(americano);
+
+        // than
+        assertThat(cafeKiosk.getBeverages().get(0).getName()).isEqualTo("아메리카노");
+    }
+
 }
