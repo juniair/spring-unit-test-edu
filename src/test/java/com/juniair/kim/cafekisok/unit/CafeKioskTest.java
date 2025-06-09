@@ -26,7 +26,7 @@ public class CafeKioskTest {
     }
 
     @Test
-    public void totalCountTest() {
+    public void totalCountTestWithEqualToMethod() {
 
         // given
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -39,6 +39,21 @@ public class CafeKioskTest {
 
         // than
         assertThat(cafeKiosk.getBeverages().size()).isEqualTo(2);
+    }
+
+    @Test
+    public void totalCountTestWithHasSizeMethod() {
+
+        // given
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Beverage americano = new Americano();
+        Beverage latte = new Latte();
+
+        // when
+        cafeKiosk.addBeverage(americano);
+        cafeKiosk.addBeverage(latte);
+
+        // than
         assertThat(cafeKiosk.getBeverages()).hasSize(2);
     }
 
