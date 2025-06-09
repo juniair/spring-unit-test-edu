@@ -2,11 +2,13 @@ package com.juniair.kim.cafekisok.unit;
 
 import com.juniair.kim.cafekisok.order.Order;
 import com.juniair.kim.cafekisok.unit.beverages.Beverage;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class CafeKiosk {
 
     private List<Beverage> beverages = new ArrayList<>();
