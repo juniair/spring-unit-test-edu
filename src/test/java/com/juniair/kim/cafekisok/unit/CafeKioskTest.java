@@ -71,4 +71,21 @@ public class CafeKioskTest {
 
     }
 
+
+    public void clearBeverageTest() {
+        // given
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Beverage americano = new Americano();
+        Beverage latte = new Latte();
+
+        // when
+        cafeKiosk.addBeverage(americano);
+        cafeKiosk.addBeverage(latte);
+        cafeKiosk.clear();
+
+        // then
+        assertThat(cafeKiosk.getBeverages()).hasSize(0);
+        assertThat(cafeKiosk.getBeverages()).isEmpty();
+    }
+
 }
