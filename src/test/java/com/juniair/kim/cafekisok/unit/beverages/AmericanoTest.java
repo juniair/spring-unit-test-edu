@@ -24,5 +24,18 @@ public class AmericanoTest {
 
     }
 
+    @Test
+    public void nameEqualsWithAssertJ() throws Exception {
+
+        // given
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        // when
+        cafeKiosk.addBeverage(americano);
+
+        //then
+        assertThat(cafeKiosk.getOrder().getBeverages().get(0).getName()).isEqualTo(americano.getName());
+    }
 
 }
