@@ -56,4 +56,19 @@ public class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages().get(0).getName()).isEqualTo("아메리카노");
     }
 
+    public void removeBeverageTest() {
+        // given
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Beverage americano = new Americano();
+
+        // when
+        cafeKiosk.addBeverage(americano);
+        cafeKiosk.removeBeverage(americano);
+
+        // then
+        assertThat(cafeKiosk.getBeverages()).hasSize(0);
+        assertThat(cafeKiosk.getBeverages()).isEmpty();
+
+    }
+
 }
