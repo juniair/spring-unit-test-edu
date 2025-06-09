@@ -32,6 +32,5 @@ public class CafeKioskRunner {
 
         // 총가격 출력
         System.out.println("음료 총 가격: " + totalPrice);
-
     }
 }
