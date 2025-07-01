@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AmericanoTest {
+class AmericanoTest {
 
     @Test
-    public void nameEqualsWithJUnit5() throws Exception {
+     void nameEqualsWithJUnit5() throws Exception {
 
         //given
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -25,7 +25,7 @@ public class AmericanoTest {
     }
 
     @Test
-    public void nameEqualsWithAssertJ() throws Exception {
+    void nameEqualsWithAssertJ() {
 
         // given
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -37,5 +37,6 @@ public class AmericanoTest {
         //then
         assertThat(cafeKiosk.getOrder().getBeverages().get(0).getName()).isEqualTo(americano.getName());
     }
+
 
 }
