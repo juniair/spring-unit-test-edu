@@ -56,7 +56,11 @@ public class CafeKiosk {
         return totalPrice;
     }
 
-    public int getTotalPriceForTdd() {
+    public int getTotalPriceForTddRed() {
+        return 0;
+    }
+
+    public int getTotalPriceForTddGreen() {
         return 3000;
     }
 
