@@ -18,6 +18,19 @@ public class CafeKiosk {
         beverages.add(beverage);
     }
 
+
+    public void addBeverages(Beverage beverage, int count) {
+
+        if(count <= 0) {
+            throw new IllegalArgumentException("갯수는 0이하가 될 수 없습니다.");
+        }
+
+        for(int i = 0; i < count; i++) {
+            addBeverage(beverage);
+        }
+
+    }
+
     // 음료 삭제 기능
     public void removeBeverage(Beverage beverage) {
         beverages.remove(beverage);
