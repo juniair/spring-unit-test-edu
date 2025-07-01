@@ -153,6 +153,23 @@ class CafeKioskTest {
                 .hasMessage("갯수는 0이하가 될 수 없습니다.");      // 예외에 대한 메시지 확인(then)
     }
 
+    @DisplayName("주문은 개점 시간(10:00)이전과 폐점 시간(20:00)이후에는 키오스크로 할 수 없다.")
+    @Test
+    void orderableTimeTest() {
+        // given
+        // 카페 키오스크 객체 생성
+        CafeKiosk cafeKiosk = new CafeKiosk();
 
+        // 아메리카노 객체 생성
+        Beverage americano = new Americano();
+
+        // 아메리카노 주문 항목체 추가
+        cafeKiosk.addBeverage(americano);
+
+        // when & then
+        assertThatThrownBy(() -> cafeKiosk.getOrder())
+                .isInstanceOf(IllegalArgumentException.class)   // 발생한 예외 확인(then)
+                .hasMessage("현재 주문을 할 수 없는 시간입니다.");      // 예외에 대한 메시지 확인(then)
+    }
 
 }
