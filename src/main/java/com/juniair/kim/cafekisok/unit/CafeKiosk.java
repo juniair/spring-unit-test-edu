@@ -60,10 +60,19 @@ public class CafeKiosk {
         // LocalDateTime으로 현재 날짜 시간 가지고
         LocalDateTime currentDateTime = LocalDateTime.now();
         LocalTime currentTime = currentDateTime.toLocalTime();
-        if (currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_OPEN_TIME)) {
+        if (currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_END_TIME)) {
             throw new IllegalArgumentException("현재 주문을 할 수 없는 시간입니다.");
         }
         return new Order(LocalDate.now(), beverages);
+    }
+
+    public Order getOrder(LocalDateTime orderDateTime) {
+        LocalTime orderTime = orderDateTime.toLocalTime();
+        if (orderTime.isBefore(SHOP_OPEN_TIME) || orderTime.isAfter(SHOP_END_TIME)) {
+            throw new IllegalArgumentException("현재 주문을 할 수 없는 시간입니다.");
+        }
+        return new Order(orderDateTime.toLocalDate(), beverages);
+
     }
 
 

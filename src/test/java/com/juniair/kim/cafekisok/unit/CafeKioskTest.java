@@ -7,6 +7,8 @@ import com.juniair.kim.cafekisok.unit.beverages.Latte;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -153,9 +155,9 @@ class CafeKioskTest {
                 .hasMessage("갯수는 0이하가 될 수 없습니다.");      // 예외에 대한 메시지 확인(then)
     }
 
-    @DisplayName("주문은 개점 시간(10:00)이전과 폐점 시간(20:00)이후에는 키오스크로 할 수 없다.")
+    @DisplayName("주문은 개점 시간(10:00)이전과 폐점 시간(20:00)이후에는 키오스크로 할 수 없다.(실제 시간 기반)")
     @Test
-    void orderableTimeTest() {
+    void invalidTimeOrderTestWithRealTime() {
         // given
         // 카페 키오스크 객체 생성
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -168,6 +170,27 @@ class CafeKioskTest {
 
         // when & then
         assertThatThrownBy(() -> cafeKiosk.getOrder())
+                .isInstanceOf(IllegalArgumentException.class)   // 발생한 예외 확인(then)
+                .hasMessage("현재 주문을 할 수 없는 시간입니다.");      // 예외에 대한 메시지 확인(then)
+    }
+
+    @DisplayName("주문은 개점 시간(10:00)이전과 폐점 시간(20:00)이후에는 키오스크로 할 수 없다.(임의 시간 기반)")
+    @Test
+    void invalidTimeOrderTest() {
+        // given
+        // 카페 키오스크 객체 생성
+        CafeKiosk cafeKiosk = new CafeKiosk();
+
+        // 아메리카노 객체 생성
+        Beverage americano = new Americano();
+
+        // 아메리카노 주문 항목체 추가
+        cafeKiosk.addBeverage(americano);
+        // 검증을 위한 임시 값
+        LocalDateTime orderDateTime = LocalDateTime.of(2025, 7, 1, 9, 01);
+
+        // when & then
+        assertThatThrownBy(() -> cafeKiosk.getOrder(orderDateTime))
                 .isInstanceOf(IllegalArgumentException.class)   // 발생한 예외 확인(then)
                 .hasMessage("현재 주문을 할 수 없는 시간입니다.");      // 예외에 대한 메시지 확인(then)
     }
