@@ -195,4 +195,30 @@ class CafeKioskTest {
                 .hasMessage("현재 주문을 할 수 없는 시간입니다.");      // 예외에 대한 메시지 확인(then)
     }
 
+    @DisplayName("키오스크에서 아메리카노 1잔과 라떼 1잔을 주문시 총 금액은 3,000원이다.")
+    @Test
+    void totalPriceTestForTdd() {
+
+        // given
+
+        // 키오스크 객체 생성
+        CafeKiosk cafeKiosk = new CafeKiosk();
+
+        // 아메리카노와 라떼 객체 생성
+        Beverage americano = new Americano();
+        Beverage latte = new Latte();
+
+        // 아메리카노와 라떼 키오스크에 추가
+        cafeKiosk.addBeverage(americano);
+        cafeKiosk.addBeverage(latte);
+
+        // when
+        // 주문 총금액 계산
+        int price = cafeKiosk.getTotalPriceForTdd();
+        
+        // then
+        // 키오스크 주문 금액 확인
+        assertThat(price).isEqualTo(3000);
+    }
+
 }

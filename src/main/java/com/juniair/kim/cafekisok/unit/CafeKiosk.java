@@ -56,6 +56,10 @@ public class CafeKiosk {
         return totalPrice;
     }
 
+    public int getTotalPriceForTdd() {
+        return 0;
+    }
+
     public Order getOrder() {
         // LocalDateTime으로 현재 날짜 시간 가지고
         LocalDateTime currentDateTime = LocalDateTime.now();
