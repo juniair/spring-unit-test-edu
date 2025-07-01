@@ -130,5 +130,23 @@ class CafeKioskTest {
 
     }
 
+    // 아메리카노 0개 추가
+    @Test
+    void addBeveragesThrowTest() {
+        // given
+        // 카페 키오스크 객체 생성
+        CafeKiosk cafeKiosk = new CafeKiosk();
+
+        // 아메리카노 객체 생성
+        Beverage americano = new Americano();
+
+        // when & then
+        // 아메리카노 0잔 추가시 예외 발생 확인
+        assertThatThrownBy(() -> cafeKiosk.addBeverages(americano, 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("갯수는 0이하가 될 수 없습니다.");
+    }
+
+
 
 }
