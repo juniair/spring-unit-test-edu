@@ -7,10 +7,11 @@ import com.juniair.kim.cafekisok.unit.beverages.Latte;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CafeKioskTest {
+class CafeKioskTest {
 
-    public void addBeverageTest() {
+    void addBeverageTest() {
 
         // given
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -26,7 +27,7 @@ public class CafeKioskTest {
     }
 
     @Test
-    public void totalCountTestWithEqualToMethod() {
+    void totalCountTestWithEqualToMethod() {
 
         // given
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -42,7 +43,7 @@ public class CafeKioskTest {
     }
 
     @Test
-    public void totalCountTestWithHasSizeMethod() {
+    void totalCountTestWithHasSizeMethod() {
 
         // given
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -58,7 +59,7 @@ public class CafeKioskTest {
     }
 
     @Test
-    public void hasBeverageTestForName() {
+    void hasBeverageTestForName() {
 
         // given
         CafeKiosk cafeKiosk = new CafeKiosk();
@@ -72,7 +73,7 @@ public class CafeKioskTest {
     }
 
     @Test
-    public void removeBeverageTest() {
+    void removeBeverageTest() {
         // given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Beverage americano = new Americano();
@@ -88,7 +89,7 @@ public class CafeKioskTest {
     }
 
     @Test
-    public void clearBeverageTest() {
+    void clearBeverageTest() {
         // given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Beverage americano = new Americano();
@@ -103,5 +104,31 @@ public class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).hasSize(0);
         assertThat(cafeKiosk.getBeverages()).isEmpty();
     }
+
+
+    // 아메리카노 2개 추가 테스트
+    @Test
+    void addBeveragesEqualsTest() {
+
+        // given
+        // 카페 키오스크 객체 생성
+        CafeKiosk cafeKiosk = new CafeKiosk();
+
+        // 아메리카노 객체 생성
+        Beverage americano = new Americano();
+
+        // when
+
+        // 아메리카노 2잔 추가
+        cafeKiosk.addBeverages(americano, 2);
+        Beverage firstAmericano = cafeKiosk.getBeverages().get(0);
+        Beverage secondAmericano = cafeKiosk.getBeverages().get(1);
+
+        // then
+        // 첫번쨰 아메리카노와 두번쨰 아메리카노 비교
+        assertThat(firstAmericano).isEqualTo(secondAmericano);
+
+    }
+
 
 }
