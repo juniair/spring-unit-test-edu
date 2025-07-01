@@ -143,8 +143,8 @@ class CafeKioskTest {
         // when & then
         // 아메리카노 0잔 추가시 예외 발생 확인
         assertThatThrownBy(() -> cafeKiosk.addBeverages(americano, 0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("갯수는 0이하가 될 수 없습니다.");
+                .isInstanceOf(IllegalArgumentException.class)   // 발생한 예외 확인(then)
+                .hasMessage("갯수는 0이하가 될 수 없습니다.");      // 예외에 대한 메시지 확인(then)
     }
 
 
