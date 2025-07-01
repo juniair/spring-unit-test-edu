@@ -4,6 +4,7 @@ package com.juniair.kim.cafekisok.unit;
 import com.juniair.kim.cafekisok.unit.beverages.Americano;
 import com.juniair.kim.cafekisok.unit.beverages.Beverage;
 import com.juniair.kim.cafekisok.unit.beverages.Latte;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +27,7 @@ class CafeKioskTest {
         System.out.println("추가 된 음료가격: " + beverage.getPrice());
     }
 
+    @DisplayName("카페키오스크는 여러 개의 음료를 추가 할 수 있다.")
     @Test
     void totalCountTestWithEqualToMethod() {
 
@@ -42,6 +44,7 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages().size()).isEqualTo(2);
     }
 
+    @DisplayName("카페키오스크는 여러 개의 음료를 추가 할 수 있다.")
     @Test
     void totalCountTestWithHasSizeMethod() {
 
@@ -58,6 +61,7 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).hasSize(2);
     }
 
+    @DisplayName("카페키오스크는 아메리카노를 추가 할 수 있다.")
     @Test
     void hasBeverageTestForName() {
 
@@ -72,6 +76,7 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages().get(0).getName()).isEqualTo("아메리카노");
     }
 
+    @DisplayName("카페키오스크는 추가한 음료를 뺄 수 있다.")
     @Test
     void removeBeverageTest() {
         // given
@@ -88,6 +93,7 @@ class CafeKioskTest {
 
     }
 
+    @DisplayName("카페키오스크는 주문 된 음료를 한번에 삭제 할 수 있다.")
     @Test
     void clearBeverageTest() {
         // given
@@ -106,7 +112,7 @@ class CafeKioskTest {
     }
 
 
-    // 아메리카노 2개 추가 테스트
+    @DisplayName("카페키오스는 동일한 음료를 한번에 여러개를 담을 수 있다.")
     @Test
     void addBeveragesEqualsTest() {
 
@@ -130,7 +136,7 @@ class CafeKioskTest {
 
     }
 
-    // 아메리카노 0개 추가
+    @DisplayName("카페키오스크는 음료를 0잔 이하를 담을 수 없다.")
     @Test
     void addBeveragesThrowTest() {
         // given
