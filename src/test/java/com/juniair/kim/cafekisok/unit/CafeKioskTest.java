@@ -187,7 +187,7 @@ class CafeKioskTest {
         // 아메리카노 주문 항목체 추가
         cafeKiosk.addBeverage(americano);
         // 검증을 위한 임시 값
-        LocalDateTime orderDateTime = LocalDateTime.of(2025, 7, 1, 9, 01);
+        LocalDateTime orderDateTime = LocalDateTime.of(2025, 7, 1, 9, 1);
 
         // when & then
         assertThatThrownBy(() -> cafeKiosk.getOrder(orderDateTime))
