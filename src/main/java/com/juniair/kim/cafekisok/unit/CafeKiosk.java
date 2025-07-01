@@ -5,11 +5,16 @@ import com.juniair.kim.cafekisok.unit.beverages.Beverage;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 public class CafeKiosk {
+
+    private final LocalTime SHOP_OPEN_TIME = LocalTime.of(10, 0);
+    private final LocalTime SHOP_END_TIME = LocalTime.of(20, 0);
 
     private List<Beverage> beverages = new ArrayList<>();
 
@@ -52,6 +57,12 @@ public class CafeKiosk {
     }
 
     public Order getOrder() {
+        // LocalDateTime으로 현재 날짜 시간 가지고
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalTime currentTime = currentDateTime.toLocalTime();
+        if (currentTime.isBefore(SHOP_OPEN_TIME) || currentTime.isAfter(SHOP_OPEN_TIME)) {
+            throw new IllegalArgumentException("현재 주문을 할 수 없는 시간입니다.");
+        }
         return new Order(LocalDate.now(), beverages);
     }
 
