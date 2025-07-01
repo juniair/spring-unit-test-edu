@@ -57,7 +57,7 @@ public class CafeKiosk {
     }
 
     public int getTotalPriceForTdd() {
-        return 0;
+        return 3000;
     }
 
     public Order getOrder() {
